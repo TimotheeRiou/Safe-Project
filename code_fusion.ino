@@ -1,4 +1,4 @@
-//bon prog
+
 #include <SoftwareSerial.h>
 #define PINNUMBER "1234"
 SoftwareSerial mySerial(11, 10);

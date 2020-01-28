@@ -66,15 +66,15 @@ void setup(){
   pinMode(lock,OUTPUT);
   lcd.begin(16, 2);
   lcd.setCursor(0,0);
-  lcd.print("Arduino Securite");
+  lcd.print("Arduino Security");
   lcd.setCursor(0,1);
-  lcd.print("Porte Electrique  ");
+  lcd.print("Electric Door  ");
   delay(1000);
   lcd.clear();
   lcd.setCursor(0,0);
-  lcd.print("Ouverture Coffre  ");
+  lcd.print("Safe opening  ");
   lcd.setCursor(0,1);
-  lcd.print("Avec Mot de passe  ");
+  lcd.print("With passsword  ");
   delay(1000);
   lcd.clear();
 }
@@ -116,12 +116,12 @@ void unlockTheDoor(){
   digitalWrite(lock, LOW);
   while(!checkPassword){
     lcd.setCursor(0,0);
-    lcd.print("Tapez MDP:");
+    lcd.print("Enter the password:");
     lcd.setCursor(0,1);
-    lcd.print("MDP>>");
+    lcd.print("Password>>");
     lcd.setCursor(10,1);
     lcd.print(test);
-    lcd.print("echec");
+    lcd.print("failure");
     keypressed = myKeypad.getKey();   
     if (keypressed != NO_KEY){   
       if (keypressed == '0' || keypressed == '1' || keypressed == '2' || keypressed == '3' ||
@@ -141,9 +141,9 @@ void unlockTheDoor(){
         if (password==tempPassword){
           lcd.clear();      
           lcd.setCursor(0,0);
-          lcd.print("MDP Correct");
+          lcd.print("Correct Password");
           lcd.setCursor(0,1);
-          lcd.print("Porte ouverte");
+          lcd.print("Door open");
           tone(buzzer,100);
           digitalWrite(lock, HIGH);
           delay(1500);
@@ -158,9 +158,9 @@ void unlockTheDoor(){
           delay(300);
           lcd.clear();
           lcd.setCursor(6,0);
-          lcd.print("MDP");
+          lcd.print("password");
           lcd.setCursor(3,1);
-          lcd.print("incorrect");
+          lcd.print("wrong");
           delay(500);
           test=test+1;
           goto lockAgain;
@@ -175,9 +175,9 @@ void unlockTheDoor(){
 void block() {
   lcd.clear();
   lcd.setCursor(0,0);
-  lcd.print("alarme");
+  lcd.print("alarm");
   test=0;
-if ("MDP">5)                                                         //si il ya a plus de 5 tentatives
+if ("password">5)                                                         //if there are more than 5 attempts
 {
   void updateSerial()
 {
@@ -208,10 +208,10 @@ void loop()
    mySerial.println("AT+CMGF=1");
    updateSerial();
    
-   mySerial.println("AT+CMGS=\"+33XXXXXXXXX\"");       //+33XXXXXXXXX est le numéro de téléphone pour le module GSM
+   mySerial.println("AT+CMGS=\"+00XXXXXXXXX\"");       //+00XXXXXXXXX is the phone number for the GSM module
    updateSerial();
    
-   mySerial.print("Tentative d'intrusion dans le local !");
+   mySerial.print("Attempted intrusion into the premises!");
    updateSerial();
    
    mySerial.write(26);
